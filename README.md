@@ -20,7 +20,7 @@ GET      : Get a resource or list of resources
 Retrieve promo codes (all or active only).
 
 + Parameters
-    + type (optional, String): Set type = all to retrieve all promo codes including expired and inactive codes. Set type = active to retrieve only active promo codes. Not assigning any value to type also returns only active promo codes.
+    + type (optional, String): Set type = active to retrieve only active promo codes. Not assigning any value to type returns only active promo codes.
 
 + Response (application/json)
 
@@ -47,7 +47,7 @@ Retrieve promo codes (all or active only).
         }
     }
 ```
-[type="all"]
+[]
 ```json
 {
         "promoCodes":   {

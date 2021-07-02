@@ -19,13 +19,11 @@ class PromoCodeController extends Controller
      */
     public function index()
     {
-        $type = request()->input('type', 'all'); //Check if url has query type
-        if ($type === 'active') {
+        if(request()->has('type') && request()->type == "active") {
             $promoCodes = PromoCode::where('expires_at', '>=', Carbon::now()->toDateString())->get();
             $promoCodes = PromoCodeResource::collection($promoCodes)->hide(['deleted_at']);
         } else {
-            $promoCodes = PromoCodeResource::collection(PromoCode::withTrashed()->get());
-        }
+            $promoCodes = PromoCodeResource::collection(PromoCode::withTrashed()->get());        } 
         return response()->json(['promoCodes' => ($promoCodes)], 200);
     }
 
